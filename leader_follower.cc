@@ -22,6 +22,7 @@
 #include <vector>
 #include <algorithm>
 #include "zkclient.h"
+#include <string.h>
 
 namespace {
 	bool leader = false;

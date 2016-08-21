@@ -20,10 +20,10 @@ INCPATH=-I. \
   -I./include \
   -I./output \
   -I./output/include
-DEP_INCPATH=-I../third-64/zookeeper \
-  -I../third-64/zookeeper/include \
-  -I../third-64/zookeeper/output \
-  -I../third-64/zookeeper/output/include
+DEP_INCPATH=-I./third/zookeeper \
+  -I./third/zookeeper/include/zookeeper \
+  -I./third/zookeeper/output \
+  -I./third/zookeeper/output/include/zookeeper
 
 #============ CCP vars ============
 CCHECK=@ccheck.py
@@ -89,8 +89,8 @@ test:test_test.o \
   test_zkclient.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mtest[0m']"
 	$(CXX) test_test.o \
-  test_zkclient.o -Xlinker "-("  ../third-64/zookeeper/lib/libzookeeper_mt.a \
-  ../third-64/zookeeper/lib/libzookeeper_st.a -lpthread \
+  test_zkclient.o -Xlinker "-("  ./third/zookeeper/lib/libzookeeper_mt.a \
+  ./third/zookeeper/lib/libzookeeper_st.a -lpthread \
   -lcrypto \
   -lrt -Xlinker "-)" -o test
 	mkdir -p ./output/bin
@@ -100,8 +100,8 @@ leader_follower:leader_follower_leader_follower.o \
   leader_follower_zkclient.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mleader_follower[0m']"
 	$(CXX) leader_follower_leader_follower.o \
-  leader_follower_zkclient.o -Xlinker "-("  ../third-64/zookeeper/lib/libzookeeper_mt.a \
-  ../third-64/zookeeper/lib/libzookeeper_st.a -lpthread \
+  leader_follower_zkclient.o -Xlinker "-("  ./third/zookeeper/lib/libzookeeper_mt.a \
+  ./third/zookeeper/lib/libzookeeper_st.a -lpthread \
   -lcrypto \
   -lrt -Xlinker "-)" -o leader_follower
 	mkdir -p ./output/bin
